@@ -1,0 +1,18 @@
+FROM mcr.microsoft.com/azurelinux/base/core:3.0
+
+# oe's likely build dependencies
+RUN tdnf install make cmake build-essential openssl-devel clang doxygen -y
+
+# Helpful for interactive work
+RUN tdnf install nano git ca-certificates -y
+
+# Copy the checked out branch with submodules
+COPY openenclave /openenclave
+
+RUN mkdir /openenclave/build
+WORKDIR /openenclave/build
+
+RUN cmake ..
+RUN make
+
+# Output in /openenclave/build/output
