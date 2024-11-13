@@ -85,7 +85,8 @@ if (UNIX)
   list(GET CLANG_VERSION_LIST 0 CLANG_MAJOR_VERSION)
 
   set(CLANG_INTRINSIC_HEADERS_SEARCH_PATH
-      "/usr/lib/llvm-${CLANG_MAJOR_VERSION}/lib/clang/${CMAKE_C_COMPILER_VERSION}/include"
+      "/usr/lib/clang/18/include"
+#      "/usr/lib/llvm-${CLANG_MAJOR_VERSION}/lib/clang/${CMAKE_C_COMPILER_VERSION}/include"
   )
 elseif (WIN32)
   find_program(
