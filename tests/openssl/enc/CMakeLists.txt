@@ -33,8 +33,6 @@ enclave_compile_options(
   openssl-support PRIVATE -Wno-shorten-64-to-32 -Wno-sign-conversion
   -Wno-conversion -Wno-unused-parameter)
 
-enclave_compile_options(
-
 enclave_link_libraries(openssl-support PRIVATE oelibcxx oelibc oe_includes)
 enclave_include_directories(
   openssl-support PRIVATE ${OPENSSL_DIR}/include
