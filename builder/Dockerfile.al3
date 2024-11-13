@@ -10,7 +10,7 @@ RUN tdnf install nano git ca-certificates -y
 RUN tdnf install rpm-build -y
 
 # Copy the checked out branch with submodules
-COPY openenclave /openenclave
+COPY . /openenclave
 
 # Output will be in /openenclave/build/output
 
