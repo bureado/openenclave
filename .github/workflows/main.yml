@@ -12,6 +12,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: azurelinux3
+          submodules: 'recursive'
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
