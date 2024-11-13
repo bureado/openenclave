@@ -6,8 +6,13 @@ RUN tdnf install make cmake build-essential openssl-devel clang doxygen -y
 # Helpful for interactive work
 RUN tdnf install nano git ca-certificates -y
 
+# We need it for packages
+RUN tdnf install rpm-build -y
+
 # Copy the checked out branch with submodules
 COPY openenclave /openenclave
+
+# Output will be in /openenclave/build/output
 
 RUN mkdir /openenclave/build
 WORKDIR /openenclave/build
@@ -15,4 +20,8 @@ WORKDIR /openenclave/build
 RUN cmake ..
 RUN make
 
-# Output in /openenclave/build/output
+# Build RPM packages
+
+RUN cpack -G RPM
+# RUN cpack -G RPM -D CPACK_DEB_COMPONENT_INSTALL=ON -DCPACK_COMPONENTS_ALL=OEHOSTVERIFY
+
