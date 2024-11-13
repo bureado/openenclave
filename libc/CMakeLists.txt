@@ -912,7 +912,7 @@ maybe_build_using_clangw(oelibc)
 set_property(TARGET oelibc PROPERTY C_STANDARD 99)
 
 enclave_compile_options(oelibc PRIVATE -fno-builtin-memcpy -fno-builtin-memset
-                        -ffreestanding)
+                        -ffreestanding -Wno-error=unused-but-set-variable)
 
 if (OE_SGX)
   enclave_compile_options(oelibc PRIVATE -mrdrnd)
@@ -946,7 +946,7 @@ if (CMAKE_C_COMPILER_ID MATCHES GNU)
     -Wno-jump-misses-init
     -Wno-maybe-uninitialized
     -Wno-unknown-pragmas
-    -Wno-unused-but-set-variable
+#    -Wno-unused-but-set-variable
     -Wno-unused-function
     -Wno-unused-value
     -Wno-unused-variable)
@@ -959,7 +959,8 @@ elseif (CMAKE_C_COMPILER_ID MATCHES Clang OR USE_CLANGW)
     -Wno-logical-op-parentheses
     -Wno-string-plus-int
     -Wno-typedef-redefinition
-    -Wno-unneeded-internal-declaration)
+    -Wno-unneeded-internal-declaration
+    -Wno-error=unused-but-set-variable)
 endif ()
 
 # Disable optimizations for twalk.c to avoid Clang speculative load hardening flag compiler bug, see #2556

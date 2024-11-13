@@ -210,3 +210,5 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/config.h
 add_enclave_library(mbedcrypto INTERFACE)
 enclave_link_libraries(mbedcrypto INTERFACE mbedtls)
 install_enclaves(TARGETS mbedcrypto EXPORT openenclave-targets)
+
+enclave_compile_options(mbedcrypto_static PRIVATE -Wno-error=unused-but-set-variable -Wno-error=declaration-after-statement)

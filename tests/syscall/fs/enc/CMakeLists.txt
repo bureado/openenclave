@@ -30,3 +30,5 @@ endif ()
 
 enclave_link_libraries(fs_enc ${OESGXFSENCLAVE} oelibcxx oecpio oeenclave
                        oehostfs)
+
+enclave_compile_options(fs_enc PRIVATE -Wno-error=unused-but-set-variable)

@@ -20,6 +20,7 @@ enclave_compile_options(
   -fPIE
   -ffreestanding
   -fvisibility=hidden
+  -Wno-error=unused-but-set-variable
   ${TEE_C_FLAGS})
 
 # Specify the warning options as source files properties so that

@@ -70,6 +70,7 @@ enclave_include_directories(edl_enc PRIVATE ${CMAKE_CURRENT_BINARY_DIR}
 if (NOT WIN32)
   # Re-enable strict aliasing. TODO: Remove this when #1717 is resolved.
   enclave_compile_options(edl_enc PUBLIC -fstrict-aliasing
+                          -Wno-error=array-parameter -Wno-error=vla-cxx-extension
                           -Werror=strict-aliasing)
 endif ()
 

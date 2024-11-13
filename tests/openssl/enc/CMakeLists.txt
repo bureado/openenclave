@@ -33,6 +33,8 @@ enclave_compile_options(
   openssl-support PRIVATE -Wno-shorten-64-to-32 -Wno-sign-conversion
   -Wno-conversion -Wno-unused-parameter)
 
+enclave_compile_options(
+
 enclave_link_libraries(openssl-support PRIVATE oelibcxx oelibc oe_includes)
 enclave_include_directories(
   openssl-support PRIVATE ${OPENSSL_DIR}/include
@@ -81,7 +83,7 @@ enclave_compile_definitions(openssl_3-support PRIVATE __STDC_NO_ATOMICS__)
 
 enclave_compile_options(
   openssl_3-support PRIVATE -Wno-shorten-64-to-32 -Wno-sign-conversion
-  -Wno-conversion -Wno-unused-parameter)
+  -Wno-conversion -Wno-unused-parameter -Wno-error=deprecated-declarations)
 
 enclave_link_libraries(openssl_3-support PRIVATE oelibcxx oelibc oe_includes)
 enclave_include_directories(
@@ -318,8 +320,7 @@ function (add_openssl_test_enc NAME BUILDTEST CRYPTO_LIB)
     -Wno-shorten-64-to-32
     -Wno-sign-conversion
     -Wno-conversion
-    -Wno-unused-parameter
-    -Wno-deprecated-declarations)
+    -Wno-unused-parameter)
 
   enclave_compile_definitions(
     openssl-${TEST_NAME}_enc PRIVATE OPENSSL_NO_AFALGENG __STDC_NO_ATOMICS__

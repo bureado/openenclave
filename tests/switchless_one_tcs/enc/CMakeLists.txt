@@ -22,3 +22,6 @@ add_enclave(
 enclave_include_directories(switchless_one_tcs_enc PRIVATE
                             ${CMAKE_CURRENT_BINARY_DIR})
 enclave_link_libraries(switchless_one_tcs_enc oelibc)
+
+enclave_compile_options(switchless_one_tcs_enc
+                        PRIVATE -Wno-error=unused-but-set-variable)

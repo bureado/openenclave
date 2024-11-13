@@ -32,3 +32,5 @@ endif ()
 enclave_include_directories(
   cppException_enc PRIVATE ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR})
+
+enclave_compile_options(cppException_enc PRIVATE -Wno-error=unused-but-set-variable)

@@ -57,3 +57,15 @@ add_enclave(
 enclave_include_directories(
   sgx_zerobase_macro_enable_conf_disable_enc PRIVATE
   ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+
+enclave_compile_options(
+  sgx_zerobase_macro_only_enc PRIVATE -Wno-error=unused-but-set-variable)
+
+enclave_compile_options(
+  sgx_zerobase_conf_only_enc PRIVATE -Wno-error=unused-but-set-variable)
+
+enclave_compile_options(
+  sgx_zerobase_macro_disable_conf_enable_enc PRIVATE -Wno-error=unused-but-set-variable)
+
+enclave_compile_options(
+  sgx_zerobase_macro_enable_conf_disable_enc PRIVATE -Wno-error=unused-but-set-variable)

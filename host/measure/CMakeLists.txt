@@ -188,7 +188,7 @@ endif ()
 if (UNIX)
   target_compile_options(
     oehostmr
-    PRIVATE -Wno-attributes -Wmissing-prototypes -fPIC ${PLATFORM_FLAGS}
+    PRIVATE -Wno-attributes -Wmissing-prototypes -fPIC -Wno-error=unused-but-set-variable ${PLATFORM_FLAGS}
     PUBLIC -fstack-protector-strong)
   target_compile_definitions(
     oehostmr

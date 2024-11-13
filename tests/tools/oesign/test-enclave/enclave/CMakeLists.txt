@@ -60,3 +60,9 @@ target_include_directories(oesign_test_alt_enc
 
 target_link_libraries(oesign_test_alt_enc oeenclave ${oecrypto_lib}
                       -Wl,--undefined=oesign_test_extra_function)
+
+enclave_compile_options(oesign_test_alt_enc
+                        PRIVATE -Wno-error=gnu-folding-constant)
+
+enclave_compile_options(oesign_test_enc
+                        PRIVATE -Wno-error=gnu-folding-constant)
