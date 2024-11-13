@@ -23,5 +23,5 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: openenclave
+          context: .
           file: builder/Dockerfile.al3
