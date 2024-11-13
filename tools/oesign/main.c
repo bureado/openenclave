@@ -195,16 +195,16 @@ int dump_parser(int argc, const char* argv[])
 
         switch (c)
         {
-            case 'h':
-                fprintf(stderr, _usage_dump, argv[0]);
-                goto done;
+//            case 'h':
+//                fprintf(stderr, _usage_dump, argv[0]);
+//                goto done;
             case 'e':
                 enclave = optarg;
                 break;
-            case ':':
-                // Missing option argument
-                ret = 1;
-                goto done;
+//            case ':':
+//                // Missing option argument
+//                ret = 1;
+//                goto done;
             case '?':
             default:
                 // Invalid option
@@ -357,9 +357,9 @@ int sign_parser(int argc, const char* argv[])
 
         switch (c)
         {
-            case 'h':
-                fprintf(stderr, _usage_sign, argv[0]);
-                goto done;
+//            case 'h':
+//                fprintf(stderr, _usage_sign, argv[0]);
+//                goto done;
             case 'e':
                 enclave = optarg;
                 break;
@@ -369,7 +369,7 @@ int sign_parser(int argc, const char* argv[])
             case 'k':
                 keyfile = optarg;
                 break;
-            case 'd':
+/*            case 'd':
                 digest_signature = optarg;
                 break;
             case 'o':
@@ -392,7 +392,7 @@ int sign_parser(int argc, const char* argv[])
             case ':':
                 // Missing option argument
                 ret = 1;
-                goto done;
+                goto done;*/
             case '?':
             default:
                 // Invalid option
@@ -510,9 +510,9 @@ int digest_parser(int argc, const char* argv[])
 
         switch (c)
         {
-            case 'h':
-                fprintf(stderr, _usage_digest, argv[0]);
-                goto done;
+//            case 'h':
+//                fprintf(stderr, _usage_digest, argv[0]);
+//                goto done;
             case 'e':
                 enclave = optarg;
                 break;
@@ -522,10 +522,10 @@ int digest_parser(int argc, const char* argv[])
             case 'd':
                 digest_file = optarg;
                 break;
-            case ':':
-                // Missing option argument
-                ret = 1;
-                goto done;
+//            case ':':
+//                // Missing option argument
+//                ret = 1;
+//                goto done;
             case '?':
             default:
                 // Invalid option
