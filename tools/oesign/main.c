@@ -159,6 +159,7 @@ static const char _usage_digest[] =
     "  raw binary form.\n"
     "\n";
 
+/*
 static const char _usage_dump[] =
     "Usage: %s dump -e ENCLAVE_IMAGE\n"
     "\n"
@@ -169,6 +170,7 @@ static const char _usage_dump[] =
     "  This option dumps the .oeinfo data segment and the embedded "
     "signature information for the specified enclave.\n"
     "\n";
+*/
 
 int dump_parser(int argc, const char* argv[])
 {

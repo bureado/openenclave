@@ -1,7 +1,7 @@
-FROM mcr.microsoft.com/azurelinux/base/core:3.0
+FROM mcr.microsoft.com/azurelinux/base/core:3.0 AS builder
 
 # oe's likely build dependencies
-RUN tdnf install make cmake build-essential openssl-devel clang doxygen -y
+RUN tdnf install make cmake build-essential openssl-devel clang doxygen lld-devel -y
 
 # Helpful for interactive work
 RUN tdnf install nano git ca-certificates -y
@@ -25,3 +25,16 @@ RUN make
 RUN cpack -G RPM
 # RUN cpack -G RPM -D CPACK_DEB_COMPONENT_INSTALL=ON -DCPACK_COMPONENTS_ALL=OEHOSTVERIFY
 
+#
+# Install the oe RPM and run the tests
+#
+
+FROM mcr.microsoft.com/azurelinux/base/core:3.0 AS tester
+
+COPY --from=builder /openenclave/build/open-enclave-0.19.0-Linux.rpm /open-enclave-0.19.0-Linux.rpm
+
+RUN rpm -Uvfh /open-enclave-0.19.0-Linux.rpm
+
+COPY builder/test_script.sh /test_script.sh
+
+RUN sh /test_script.sh
